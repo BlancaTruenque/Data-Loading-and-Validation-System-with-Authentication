@@ -1,0 +1,7 @@
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    grid-template-rows: var(--spacing-16, 64px) 1fr;
+    flex-direction: column;
+  }
+  
