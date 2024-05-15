@@ -1,11 +1,20 @@
 .start{
-    padding: var(--spacing-12, 48px) 0;
-   
-    margin-inline: auto;
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
 }
-.form {
+.start h1{
+  text-align: center;
+  margin-bottom: 20px;
+}
+.start form {
     display: flex;
-    padding: var(--spacing-4, 16px) var(--spacing-2, 8px);
+  
+   
     flex-direction: column;
     gap: var(--spacing-4, 16px);
   }
@@ -32,3 +41,7 @@ height: 40px;
 border: 1px solid #D4D4D4;
 border-radius: 6px;
  }
+ 
+.start button:hover{
+  background-color:plum;
+}

@@ -2,32 +2,29 @@ import * as React from "react";
 import s from "./Storage.module.css";
 
 function Storage() {
+  // const [file, setFile] = useState(null);
 
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+  };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (file) {
+      console.log("Uploading file:", file.name);
+      // Aquí iría la lógica para subir el archivo
+    } else {
+      console.log("No file selected");
+    }
+  };
 
-
-
-
-
-    
   return (
     <>
-      <div>
-        <h1 className={s.title}>Sistema de Carga de Datos</h1>
-      </div>
-      <div >
-        <h3 className={s.subtitle}>Seleccione un archivo de carga</h3>
-        <div className={s.choose}>
-          <button type="submit" className={s.choosefile}>
-            Choose File
-          </button>
-          <button type="submit"  className={s.choosefile}>
-            No File Chosen
-          </button>
-        </div>
-        <button type="submit"  className={s.up} >
-          Upload File
-        </button>
+      <div className={s.storage}>
+        <form onSubmit={handleSubmit}>
+          <input type="file" onChange={handleFileChange} accept=".csv" />
+          <button type="submit">Upload File</button>
+        </form>
       </div>
     </>
   );
