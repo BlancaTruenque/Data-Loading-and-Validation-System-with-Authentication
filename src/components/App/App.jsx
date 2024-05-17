@@ -6,14 +6,11 @@ import Data from "../Data/Data";
 
 function App() {
   return (
-    (
-      <AuthProvider>
-        <div className={s.wrapper}>
-          <Home />
-        </div>
-      </AuthProvider>
-    ),
-    (<Data></Data>)
+    <AuthProvider>
+      <div className={s.wrapper}>
+        <Home />
+      </div>
+    </AuthProvider>
   );
 }
 
