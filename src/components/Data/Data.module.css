@@ -1,0 +1,47 @@
+.errorList {
+    font-family: Arial, sans-serif;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .successMessage, .errorMessage {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .successMessage {
+    border-color: #c5e1a5;
+  }
+  
+  .errorRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .errorRow > div {
+    flex: 1;
+  }
+  
+  .inputError {
+    border-color: red;
+  }
+  
+  input[type="text"], input[type="number"] {
+    padding: 5px;
+    margin: 0 10px;
+    width: calc(33% - 22px);
+  }
+  
+  button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #f0f0f0;
+  }

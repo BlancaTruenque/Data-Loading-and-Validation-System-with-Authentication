@@ -1,4 +1,5 @@
 import React from "react";
+import s from "../Data/Data.module.css";
 
 const initialErrors = [
   {
@@ -43,9 +44,12 @@ const ErrorHandling = () => {
   };
 
   return (
-    <div>
+    <div className={s.errorList}>
       <h1>Sistema de Carga de Datos</h1>
-      <p>18 registros cargados exitosamente</p>
+      <div className={s.successMessage}>
+        <p>18 registros cargados exitosamente</p>
+        <button onClick={handleNewFile}>New File</button>
+      </div>
       <p>
         Los siguientes registros encontraron errores. Por favor rectifique estos
         problemas y vuelva a intentarlo.
@@ -59,6 +63,7 @@ const ErrorHandling = () => {
               type="text"
               value={error.name}
               onChange={(e) => handleChange(error.id, "name", e.target.value)}
+              className={error.nameError ? s.inputError : ""}
             />
             {error.nameError && <p>{error.nameError}</p>}
           </div>
@@ -68,6 +73,7 @@ const ErrorHandling = () => {
               type="email"
               value={error.email}
               onChange={(e) => handleChange(error.id, "email", e.target.value)}
+              className={error.emailError ? s.inputError : ""}
             />
             {error.emailError && <p>{error.emailError}</p>}
           </div>
@@ -77,13 +83,14 @@ const ErrorHandling = () => {
               type="number"
               value={error.age}
               onChange={(e) => handleChange(error.id, "age", e.target.value)}
+              className={error.ageError ? s.inputError : ""}
             />
             {error.ageError && <p>{error.ageError}</p>}
           </div>
           <button onClick={() => handleRetry(error.id)}>Retry</button>
         </div>
       ))}
-      <button onClick={handleNewFile}>New File</button>
+      <button onClick={handleRetry}>Retry</button>
     </div>
   );
 };

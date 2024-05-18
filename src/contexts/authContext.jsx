@@ -8,7 +8,7 @@ const authContext = React.createContext({
 });
 
 export function AuthProvider({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(true);
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
   async function login(email, password) {
     const options = {
@@ -18,17 +18,17 @@ export function AuthProvider({ children }) {
         "Content-Type": "application/json",
       },
     };
-
     const response = await fetch("api/login", options);
+
     if (response.ok) {
       const responseJson = await response.json();
       console.log(responseJson);
+      // TODO
+      localStorage.setItem("token", responseJson.data.token);
       setIsAuthenticated(true);
+      return true;
     } else {
-      const body = await response.json();
-      const error =
-        body.errors instanceof Array ? body.errors.join(", ") : body.errors;
-      return Promise.reject(new Error(error));
+      return false;
     }
   }
 
