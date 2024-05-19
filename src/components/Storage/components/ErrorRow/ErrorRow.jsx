@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./ErrorList.module.css";
+import s from "./ErrorRow.module.css";
 
 function ErrorRow({ row, detail, data, handleRetry }) {
   const [name, setName] = React.useState(data.name);
@@ -46,43 +46,4 @@ function ErrorRow({ row, detail, data, handleRetry }) {
   );
 }
 
-export default function ErrorList({ errorList, data, handleRetry }) {
-  function getDataByRow(data, row) {
-    return data[row - 1];
-  }
-
-  return (
-    <>
-      <h2>
-        The ({errorList.length}) records listed below encountered errors. Please
-        rectify these issues and retry
-      </h2>
-      <div className={s.body}>
-        <table>
-          <thead>
-            <tr>
-              <th>Row</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Age</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {errorList.map((element) => {
-              return (
-                <ErrorRow
-                  key={element.row}
-                  row={element.row}
-                  detail={element.details}
-                  data={getDataByRow(data, element.row)}
-                  handleRetry={handleRetry}
-                />
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </>
-  );
-}
+export default ErrorRow;

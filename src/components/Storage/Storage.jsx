@@ -1,7 +1,7 @@
 import * as React from "react";
 import s from "./Storage.module.css";
 import Papa from "papaparse";
-import ErrorList from "./components/ErrorList";
+import ErrorList from "./components/ErrorList/ErrorList";
 
 function Storage() {
   const [data, setData] = React.useState([]);
@@ -110,7 +110,7 @@ function Storage() {
         </div>
       ) : (
         <div className={s.container}>
-          <button onClick={handleNewFile}>New File </button>
+          <button onClick={handleNewFile}>New File</button>
           <ErrorList errorList={errors} data={data} handleRetry={handleRetry} />
         </div>
       )}

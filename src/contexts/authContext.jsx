@@ -1,7 +1,6 @@
 import * as React from "react";
-import { useNavigation } from "react-router-dom";
 
-const authContext = React.createContext({
+export const authContext = React.createContext({
   isAuthenticated: false,
   login: () => {},
 });

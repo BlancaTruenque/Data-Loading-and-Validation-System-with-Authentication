@@ -1,6 +1,6 @@
 import * as React from "react";
 import s from "./App.module.css";
-import { AuthProvider, useAuth } from "../../contexts/authContext";
+import { AuthProvider } from "../../contexts/authContext";
 import Start from "../Start/Start";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
