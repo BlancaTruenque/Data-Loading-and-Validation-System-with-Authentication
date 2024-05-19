@@ -1,13 +1,14 @@
 import * as React from "react";
 import s from "./Start.module.css";
 import { useAuth } from "../../contexts/authContext";
-
+import { useNavigate } from "react-router-dom";
 
 function Start() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
   const [alert, setAlert] = React.useState(false);
+  const navigate = useNavigate();
 
   const { login } = useAuth();
 
@@ -23,10 +24,11 @@ function Start() {
 
     const result = await login(email, password);
 
+    setIsLoading(false);
+
     if (result == true) {
-      setIsLoading(false);
+      navigate("/admin");
     } else {
-      setIsLoading(false);
       setAlert(true);
     }
   }
@@ -48,6 +50,7 @@ function Start() {
           <div className={s.data}>
             <label htmlFor="email">Email</label>
             <input
+              className={s.input}
               onChange={addEmail}
               id="email"
               type="email"
@@ -61,6 +64,7 @@ function Start() {
           <div className={s.data}>
             <label htmlFor="password">Password</label>
             <input
+              className={s.input}
               onChange={addPassword}
               type="password"
               id="password"
@@ -70,7 +74,7 @@ function Start() {
               minLength={6}
             />
           </div>
-          <button type="submit" disabled={isLoading}>
+          <button className={s.button} type="submit" disabled={isLoading}>
             Login
           </button>
         </form>

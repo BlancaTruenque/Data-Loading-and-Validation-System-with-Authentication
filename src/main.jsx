@@ -2,7 +2,6 @@ import * as React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App/App"
 import { Response, createServer } from "miragejs";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 createServer({
   routes() {
@@ -83,20 +82,31 @@ createServer({
         },
       };
     });
+
+    this.post("/upload", (scheme, fakeRequest) => {
+      const body = JSON.parse(fakeRequest.requestBody);
+
+      return {
+        ok: true,
+        data: {
+          success: [
+            {
+              id: 1,
+              name: body.name,
+              email: body.email,
+              age: body.age,
+            },
+          ],
+          errors: [],
+        },
+      };
+    });
   },
 });
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-]);
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    {/* <App /> */}
+    <App />
   </React.StrictMode>
 );
   

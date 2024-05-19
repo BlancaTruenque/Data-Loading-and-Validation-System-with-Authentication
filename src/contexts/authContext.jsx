@@ -1,6 +1,5 @@
 import * as React from "react";
-
-
+import { useNavigation } from "react-router-dom";
 
 const authContext = React.createContext({
   isAuthenticated: false,
@@ -8,7 +7,9 @@ const authContext = React.createContext({
 });
 
 export function AuthProvider({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [isAuthenticated, setIsAuthenticated] = React.useState(
+    !!localStorage.getItem("token")
+  );
 
   async function login(email, password) {
     const options = {
@@ -22,11 +23,14 @@ export function AuthProvider({ children }) {
 
     if (response.ok) {
       const responseJson = await response.json();
-      console.log(responseJson);
-      // TODO
-      localStorage.setItem("token", responseJson.data.token);
-      setIsAuthenticated(true);
-      return true;
+      if (responseJson.data.role == "admin") {
+        setIsAuthenticated(true);
+        localStorage.setItem("token", responseJson.data.token);
+
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }

@@ -1,14 +1,27 @@
 import * as React from "react";
 import s from "./App.module.css";
-import { AuthProvider } from "../../contexts/authContext";
-import Home from "../Home/Home";
-import Data from "../Data/Data";
+import { AuthProvider, useAuth } from "../../contexts/authContext";
+import Start from "../Start/Start";
+
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Admin from "../Admin/Admin";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Start />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
+  },
+]);
 
 function App() {
   return (
     <AuthProvider>
       <div className={s.wrapper}>
-        <Home />
+        <RouterProvider router={router} />
       </div>
     </AuthProvider>
   );

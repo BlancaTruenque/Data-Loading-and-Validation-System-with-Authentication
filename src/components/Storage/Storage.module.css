@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column;
   }
   
   .storage form {
@@ -22,3 +23,10 @@
     width: 300px;
   }
   
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
