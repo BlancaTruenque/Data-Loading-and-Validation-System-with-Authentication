@@ -40,7 +40,9 @@ function ErrorRow({ row, detail, data, handleRetry }) {
         {detail.age !== null ? <span>{detail.age}</span> : ""}
       </td>
       <td>
-        <button onClick={retryOnClick}>Retry</button>
+        <button className={s.button1} onClick={retryOnClick}>
+          Retry
+        </button>
       </td>
     </tr>
   );

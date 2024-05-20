@@ -36,10 +36,14 @@ function Start() {
   return (
     <>
       <div className={s.start}>
-        <div>
-          <h1>Sistema de Carga de Datos</h1>
-          {alert ? <h2>Credenciales incorrectas</h2> : ""}
-        </div>
+        <h1 className={s.text}>Sistema de Carga de Datos</h1>
+        {alert ? (
+          <div className={s.alertError}>
+            <span className={s.subtext}>Credenciales incorrectas</span>
+          </div>
+        ) : (
+          ""
+        )}
         <br />
         <form
           className={s.form}
@@ -48,7 +52,9 @@ function Start() {
           }}
         >
           <div className={s.data}>
-            <label htmlFor="email">Email</label>
+            <label className={s.label} htmlFor="email">
+              Email
+            </label>
             <input
               className={s.input}
               onChange={addEmail}
@@ -59,10 +65,13 @@ function Start() {
               value={email}
               required
             />
+            <p className={s.p}>Ex: codeable@example.com</p>
           </div>
 
           <div className={s.data}>
-            <label htmlFor="password">Password</label>
+            <label className={s.label} htmlFor="password">
+              Password
+            </label>
             <input
               className={s.input}
               onChange={addPassword}
@@ -73,6 +82,7 @@ function Start() {
               required
               minLength={6}
             />
+            <p className={s.p}>debe tener más de 6 caracteres</p>
           </div>
           <button className={s.button} type="submit" disabled={isLoading}>
             Login

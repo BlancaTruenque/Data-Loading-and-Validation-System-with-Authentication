@@ -19,11 +19,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <AuthProvider>
-      <div className={s.wrapper}>
+    <div className={s.wrapper}>
+      <AuthProvider>
         <RouterProvider router={router} />
-      </div>
-    </AuthProvider>
+      </AuthProvider>
+    </div>
   );
 }
 

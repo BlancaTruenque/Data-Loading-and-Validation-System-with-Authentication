@@ -93,28 +93,49 @@ function Storage() {
     setData([]), setHasErrors(false), setErrors([]), setSuccess([]);
   }
   return (
-    <>
+    <div className={s.container1}>
+      <h1 className={s.title}>Sistema de Carga de datos</h1>
       {success.length > 0 ? (
-        <h1>{success.length} records uploades successfully</h1>
+        <div className={s.uploades}>
+          <div className={s.uploadesContainer}>
+            <h1>{success.length} records uploades successfully</h1>
+          </div>
+        </div>
       ) : (
         ""
       )}
       {!hasErrors ? (
         <div className={s.storage}>
-          <form onSubmit={handleSubmit}>
-            <input type="file" onChange={handleFileChange} accept=".csv" />
-            <button type="submit" onClick={handleSubmit}>
+          <h1 className={s.subtitle}>Selecciona un archivo de carga</h1>
+          <form className={s.storageform} onSubmit={handleSubmit}>
+            <input
+              className={s.storageinput}
+              type="file"
+              onChange={handleFileChange}
+              accept=".csv"
+              placeholder="blanca"
+            />
+            <button
+              className={s.storagebutton}
+              type="submit"
+              onClick={handleSubmit}
+            >
               Upload File
             </button>
           </form>
         </div>
       ) : (
         <div className={s.container}>
-          <button onClick={handleNewFile}>New File</button>
+          <div className={s.newFile}>
+            <button className={s.storagebutton2} onClick={handleNewFile}>
+              New File
+            </button>
+          </div>
+
           <ErrorList errorList={errors} data={data} handleRetry={handleRetry} />
         </div>
       )}
-    </>
+    </div>
   );
 }
 
